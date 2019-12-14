@@ -19,17 +19,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HelloController {
 
-  @Autowired private ApplicationEventPublisher publisher;
-  @Autowired private User user;
+    @Autowired
+    private ApplicationEventPublisher publisher;
+    @Autowired
+    private User user;
 
-  @RequestMapping(value = "hello", method = RequestMethod.GET)
-  public Object hello() {
-    for (int i = 0; i < 10; i++) {
-      System.out.println("sending, i=" + i);
-      publisher.publishEvent(new MyEvent(String.valueOf(i), 1));
+    @RequestMapping(value = "hello", method = RequestMethod.GET)
+    public Object hello() {
+        for (int i = 0; i < 10; i++) {
+            System.out.println("sending, i=" + i);
+            publisher.publishEvent(new MyEvent(String.valueOf(i), 1));
+        }
+        System.out.println("xxxxx======" + user);
+
+        return "hello, world!";
     }
-    System.out.println("xxxxx======" + user);
-
-    return "hello, world!";
-  }
 }

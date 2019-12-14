@@ -13,10 +13,11 @@ import org.springframework.context.ApplicationEvent;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class MyEvent extends ApplicationEvent {
-  private int times;
 
-  public MyEvent(String source, int times) {
-    super(source);
-    this.times = times;
-  }
+    private int times;
+
+    public MyEvent(String source, int times) {
+        super(source);
+        this.times = times;
+    }
 }

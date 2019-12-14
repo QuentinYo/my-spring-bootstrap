@@ -12,24 +12,24 @@ import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 @SpringBootApplication
 public class SpringWebDemoApplication {
 
-  public static void main(String[] args) {
-    SpringApplication.run(SpringWebDemoApplication.class, args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(SpringWebDemoApplication.class, args);
+    }
 
-  @Bean("backgroundTaskExecutor")
-  public AsyncTaskExecutor backgroundTaskExecutor() {
-    ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-    executor.setThreadNamePrefix("background-task-executor");
-    executor.setMaxPoolSize(2);
-    executor.setCorePoolSize(2);
-    executor.setQueueCapacity(2000);
+    @Bean("backgroundTaskExecutor")
+    public AsyncTaskExecutor backgroundTaskExecutor() {
+        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
+        executor.setThreadNamePrefix("background-task-executor");
+        executor.setMaxPoolSize(2);
+        executor.setCorePoolSize(2);
+        executor.setQueueCapacity(2000);
 
-    executor.setWaitForTasksToCompleteOnShutdown(true);
-    executor.setAwaitTerminationSeconds(50);
+        executor.setWaitForTasksToCompleteOnShutdown(true);
+        executor.setAwaitTerminationSeconds(50);
 
-    // 设置拒绝策略，尽量把任务完成
-    executor.setRejectedExecutionHandler(new CallerRunsPolicy());
+        // 设置拒绝策略，尽量把任务完成
+        executor.setRejectedExecutionHandler(new CallerRunsPolicy());
 
-    return executor;
-  }
+        return executor;
+    }
 }

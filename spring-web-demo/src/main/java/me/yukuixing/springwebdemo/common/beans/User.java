@@ -16,7 +16,8 @@ import org.springframework.context.annotation.PropertySource;
 @ConfigurationProperties(prefix = "user")
 @PropertySource("classpath:app.properties")
 public class User {
-  private String name;
 
-  private String password;w
+    private String name;
+
+    private String password;
 }

@@ -2,7 +2,6 @@ package me.yukuixing.springwebdemo.controllers;
 
 import lombok.extern.slf4j.Slf4j;
 import me.yukuixing.springwebdemo.common.beans.MyEvent;
-import me.yukuixing.springwebdemo.common.beans.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,8 +20,6 @@ public class HelloController {
 
     @Autowired
     private ApplicationEventPublisher publisher;
-    @Autowired
-    private User user;
 
     @RequestMapping(value = "hello", method = RequestMethod.GET)
     public Object hello() {
@@ -30,7 +27,6 @@ public class HelloController {
             System.out.println("sending, i=" + i);
             publisher.publishEvent(new MyEvent(String.valueOf(i), 1));
         }
-        System.out.println("xxxxx======" + user);
 
         return "hello, world!";
     }

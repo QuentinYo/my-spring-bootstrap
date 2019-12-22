@@ -18,6 +18,5 @@ import org.springframework.context.annotation.PropertySource;
 public class User {
 
     private String name;
-
     private String password;
 }

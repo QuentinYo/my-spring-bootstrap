@@ -73,3 +73,11 @@ druid:
 mybatis:
   internal:
     mapperLocations: "classpath:mappers/*.xml"
+
+---
+spring:
+  profiles: stage
+
+---
+spring:
+  profiles: prod

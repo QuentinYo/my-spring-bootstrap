@@ -29,7 +29,9 @@ public class HelloController {
     @RequestMapping(value = "hello", method = RequestMethod.GET)
     public Object getUser(@RequestParam("id") long id) {
         publisher.publishEvent(new MyEvent(String.valueOf(id), 1));
-        return userProxy.getUserById(id);
+        User user = userProxy.getUserById(id);
+        log.debug("user={}", user);
+        return user;
     }
 
     @RequestMapping(value = "createuser", method = RequestMethod.POST)

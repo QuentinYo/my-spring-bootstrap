@@ -1,1 +1,75 @@
+# https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html
+spring:
+  application:
+    name: demo
+  jackson:
+    default-property-inclusion: non_null
+  http:
+    encoding:
+      charset: UTF-8
+      force: true
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 200MB
+      location: /tmp
 
+server:
+  port: 10000
+  jetty:
+    acceptors: 16
+    selectors: 32
+    max-threads: 200
+    min-threads: 20
+    thread-idle-timeout: 60000ms
+    accesslog:
+      enabled: true
+      filename: /data/logs/${spring.application.name}/access.log.yyyyMMdd
+      fileDateFormat: yyyyMMdd
+      retentionPeriod: 10
+      append: true
+
+druid:
+  master:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/gamecard?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false
+    username: root
+    password: 123456
+    filters: stat
+    maxActive: 80
+    initialSize: 10
+    maxWait: 1000
+    minIdle: 20
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: "select 1"
+    testWhileIdle: true
+    timeBetweenEvictionRunsMillis: 30000
+    testOnBorrow: false
+    testOnReturn: false
+    maxOpenPreparedStatements: 60
+    removeAbandoned: true
+    removeAbandonedTimeout: 60
+    logAbandoned: false
+  slave:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/gamecard?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false
+    username: root
+    password: 123456
+    filters: stat
+    maxActive: 80
+    initialSize: 10
+    maxWait: 1000
+    minIdle: 20
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: "select 1"
+    testWhileIdle: true
+    timeBetweenEvictionRunsMillis: 30000
+    testOnBorrow: false
+    testOnReturn: false
+    maxOpenPreparedStatements: 60
+    removeAbandoned: true
+    removeAbandonedTimeout: 60
+    logAbandoned: false
+mybatis:
+  internal:
+    mapperLocations: "classpath:mappers/*.xml"

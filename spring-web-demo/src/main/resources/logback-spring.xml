@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- https://docs.spring.io/spring-boot/docs/2.2.2.RELEASE/reference/html/spring-boot-features.html#boot-features-logging -->
 <configuration scan="true" scanPeriod="5 seconds" debug="false">
     <contextName/>
     <property name="log.path" value="/data/logs/"/>
-    <property name="log.pattern" value="[%d{HH:mm:ss.SSS}][%thread][%level][%logger{50}] %msg%n"/>
-    <property name="log.file" value="${log.path}/spring.%d{yyyy-MM-dd}.log"/>
+    <property name="log.pattern" value="[%d{HH:mm:ss.SSS}][%thread][%level][%C.%M\\(%F:%L\\)] [%msg]%n"/>
+    <property name="log.file" value="${log.path}/spring.log"/>
 
     <!-- 多环境日志配置 -->
     <springProfile name="stage">
@@ -20,7 +21,7 @@
         <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
             <level>ERROR</level>
         </filter>
-         -->
+        -->
         <encoder>
             <pattern>${log.pattern}</pattern>
         </encoder>
@@ -28,9 +29,19 @@
 
     <!--输出到文件-->
     <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.file}</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${log.file}</fileNamePattern>
+            <fileNamePattern>${log.file}.%d{yyyy-MM-dd}</fileNamePattern>
+            <maxHistory>30</maxHistory>
         </rollingPolicy>
+        <!-- 按时间和文件大小切分 -->
+        <!--
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_FILE}.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxFileSize>10MB</maxFileSize>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        -->
         <encoder>
             <pattern>${log.pattern}</pattern>
         </encoder>
@@ -41,7 +52,11 @@
         <appender-ref ref="file"/>
     </root>
 
+    <logger name="me.yukuixing.springwebdemo.dao" level="info" additivity="false">
+        <appender-ref ref="file"/>
+    </logger>
     <logger name="me.yukuixing.springwebdemo" level="${log.level}" additivity="false">
         <appender-ref ref="file"/>
     </logger>
+
 </configuration>

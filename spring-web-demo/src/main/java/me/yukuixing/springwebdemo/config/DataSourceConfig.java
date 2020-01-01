@@ -34,9 +34,7 @@ public class DataSourceConfig {
     @Primary
     @ConfigurationProperties("druid.master")
     public DataSource masterDataSource() {
-        DataSource masterDataSource = DataSourceBuilder.create().type(DruidDataSource.class).build();
-        log.info("========MASTER: {}=========", masterDataSource);
-        return masterDataSource;
+        return DataSourceBuilder.create().type(DruidDataSource.class).build();
     }
 
     @Bean
@@ -48,6 +46,7 @@ public class DataSourceConfig {
     @Primary
     public SqlSessionFactory masterSqlSessionFactory(@Qualifier("masterDataSource") DataSource dataSource,
         @Value("${mybatis.internal.mapperLocations}") String mapperLocations) throws Exception {
+        log.info("========MASTER: {}=========", dataSource);
         return createSqlSessionFactory(dataSource, mapperLocations);
     }
 
@@ -72,14 +71,13 @@ public class DataSourceConfig {
         @Bean
         @ConfigurationProperties("druid.slave")
         public DataSource slaveDataSource() {
-            DataSource slaveDataSource = DataSourceBuilder.create().type(DruidDataSource.class).build();
-            log.info("========SLAVE: {}=========", slaveDataSource);
-            return slaveDataSource;
+            return DataSourceBuilder.create().type(DruidDataSource.class).build();
         }
 
         @Bean
         public SqlSessionFactory slaveSqlSessionFactory(@Qualifier("slaveDataSource") DataSource dataSource,
             @Value("${mybatis.internal.mapperLocations}") String mapperLocations) throws Exception {
+            log.info("========SLAVE: {}=========", dataSource);
             return createSqlSessionFactory(dataSource, mapperLocations);
         }
     }

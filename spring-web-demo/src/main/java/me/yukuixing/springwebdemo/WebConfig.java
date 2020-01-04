@@ -3,6 +3,7 @@ package me.yukuixing.springwebdemo;
 import me.yukuixing.springwebdemo.interceptors.LoggerInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
@@ -25,5 +26,13 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(new LoggerInterceptor())
                 .addPathPatterns("/**")
                 .excludePathPatterns("/create*");
+    }
+
+    // https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework-reference/web.html#mvc-config-static-resources
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/resources/**")
+                .addResourceLocations("/public", "classpath:/static/")
+                .setCachePeriod(31556926);
     }
 }

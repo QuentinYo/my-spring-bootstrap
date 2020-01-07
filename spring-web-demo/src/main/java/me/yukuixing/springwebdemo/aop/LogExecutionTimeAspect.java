@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
  *
  * @author: yukuixing
  * @since : 2020-01-07 23:11
+ *
+ * https://www.baeldung.com/spring-aop-annotation
  */
 @Slf4j
 @Aspect

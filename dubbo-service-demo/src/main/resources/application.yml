@@ -1,3 +1,49 @@
+druid:
+  master:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/gamecard?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false
+    username: root
+    password: 123456
+    filters: stat
+    maxActive: 80
+    initialSize: 10
+    maxWait: 1000
+    minIdle: 20
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: "select 1"
+    testWhileIdle: true
+    timeBetweenEvictionRunsMillis: 30000
+    testOnBorrow: false
+    testOnReturn: false
+    maxOpenPreparedStatements: 60
+    removeAbandoned: true
+    removeAbandonedTimeout: 60
+    logAbandoned: false
+  slave:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/gamecard?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false
+    username: root
+    password: 123456
+    filters: stat
+    maxActive: 80
+    initialSize: 10
+    maxWait: 1000
+    minIdle: 20
+    minEvictableIdleTimeMillis: 30000
+    validationQuery: "select 1"
+    testWhileIdle: true
+    timeBetweenEvictionRunsMillis: 30000
+    testOnBorrow: false
+    testOnReturn: false
+    maxOpenPreparedStatements: 60
+    removeAbandoned: true
+    removeAbandonedTimeout: 60
+    logAbandoned: false
+
+mybatis:
+  internal:
+    mapperLocations: "classpath:mappers/*.xml"
+
 dubbo:
   application:
     name: demo-provider # 服务名

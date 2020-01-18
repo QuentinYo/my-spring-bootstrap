@@ -1,8 +1,8 @@
 package me.yukuixing.springwebdemo.proxy;
 
 import me.yukuixing.springwebdemo.aop.LogExecutionTime;
+import me.yukuixing.springwebdemo.biz.UserBiz;
 import me.yukuixing.springwebdemo.common.model.User;
-import me.yukuixing.springwebdemo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,16 +15,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserProxy {
 
-    @Autowired
-    private UserService userService;
+    @Autowired private UserBiz userBiz;
 
     public void saveUser(User user) {
-        userService.saveUser(user);
+        userBiz.saveUser(user);
     }
 
     @LogExecutionTime
     public User getUserById(long id) {
-        return userService.getUserById(id);
+        return userBiz.getUserById(id);
     }
-
 }

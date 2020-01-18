@@ -14,6 +14,15 @@
   <packaging>jar</packaging>
   <name>dubbo-interface-demo</name>
 
+  <dependencies>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <scope>provided</scope>
+      <optional>true</optional>
+    </dependency>
+  </dependencies>
+
   <build>
     <plugins>
       <plugin>

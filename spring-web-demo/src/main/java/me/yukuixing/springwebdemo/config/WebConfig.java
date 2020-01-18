@@ -1,4 +1,4 @@
-package me.yukuixing.springwebdemo;
+package me.yukuixing.springwebdemo.config;
 
 import me.yukuixing.springwebdemo.interceptors.LoggerInterceptor;
 import org.springframework.context.annotation.Configuration;
@@ -11,13 +11,12 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  *
  * @author: yukuixing
  * @since : 2020-01-03 21:12
- * <p>
- * https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-spring-mvc
- * https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework-reference/web.html#mvc-config
- * https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework-reference/web.html#mvc-config-advanced-java
+ *     <p>https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#boot-features-spring-mvc
+ *     https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework-reference/web.html#mvc-config
+ *     https://docs.spring.io/spring/docs/5.2.2.RELEASE/spring-framework-reference/web.html#mvc-config-advanced-java
  */
 
-//@EnableWebMvc
+// @EnableWebMvc
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 

@@ -2,7 +2,7 @@ package me.yukuixing.dubbo.service;
 
 import me.yukuixing.dubbo.biz.UserBiz;
 import me.yukuixing.dubbo.dto.UserInfoDto;
-import me.yukuixing.dubbo.model.UserInfo;
+import me.yukuixing.dubbo.model.User;
 import org.apache.dubbo.config.annotation.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,19 +17,21 @@ import org.springframework.stereotype.Component;
 @Component
 public class DubboServiceImpl implements DubboService {
 
-    @Autowired private UserBiz userBiz;
+    @Autowired
+    private UserBiz userBiz;
 
     @Override
     public UserInfoDto getUserInfo(long userId) {
-        UserInfo userInfo = userBiz.getUserById(userId);
+        User user = userBiz.getUserById(userId);
         UserInfoDto userInfoDto = new UserInfoDto();
-        if (userInfo == null) {
+        if (user == null) {
             return userInfoDto;
         }
 
-        userInfoDto.setId(userInfo.getId());
-        userInfoDto.setMobile(userInfo.getMobile());
-        userInfoDto.setUserName(userInfo.getUserName());
+        userInfoDto.setId(user.getId());
+        userInfoDto.setAge(user.getAge());
+        userInfoDto.setUserName(user.getName());
+        userInfoDto.setCreateTime(user.getCreateTime());
         return userInfoDto;
     }
 }

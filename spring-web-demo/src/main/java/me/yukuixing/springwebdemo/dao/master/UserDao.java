@@ -1,6 +1,6 @@
 package me.yukuixing.springwebdemo.dao.master;
 
-import me.yukuixing.springwebdemo.common.model.User;
+import me.yukuixing.dubbo.model.User;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -12,4 +12,6 @@ import org.apache.ibatis.annotations.Param;
 public interface UserDao {
 
     void saveUser(@Param("user") User user);
+
+    User getUser(@Param("userId") long userId);
 }

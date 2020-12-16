@@ -1,9 +1,9 @@
 package me.yukuixing.springwebdemo.biz;
 
-import me.yukuixing.springwebdemo.common.model.User;
+import javax.annotation.Resource;
+import me.yukuixing.dubbo.model.User;
 import me.yukuixing.springwebdemo.dao.master.UserDao;
 import me.yukuixing.springwebdemo.dao.slave.UserSlaveDao;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,9 +15,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserBiz {
 
-    @Autowired
+    @Resource
     private UserDao userDao;
-    @Autowired
+    @Resource
     private UserSlaveDao userSlaveDao;
 
     public void saveUser(User user) {

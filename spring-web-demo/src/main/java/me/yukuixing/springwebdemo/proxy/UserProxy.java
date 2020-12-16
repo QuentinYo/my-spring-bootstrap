@@ -1,8 +1,8 @@
 package me.yukuixing.springwebdemo.proxy;
 
+import me.yukuixing.dubbo.model.User;
 import me.yukuixing.springwebdemo.aop.LogExecutionTime;
 import me.yukuixing.springwebdemo.biz.UserBiz;
-import me.yukuixing.springwebdemo.common.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,7 +15,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserProxy {
 
-    @Autowired private UserBiz userBiz;
+    @Autowired
+    private UserBiz userBiz;
 
     public void saveUser(User user) {
         userBiz.saveUser(user);

@@ -1,9 +1,9 @@
 package me.yukuixing.dubbo.biz;
 
+import javax.annotation.Resource;
 import me.yukuixing.dubbo.dao.master.UserDao;
 import me.yukuixing.dubbo.dao.slave.UserSlaveDao;
-import me.yukuixing.dubbo.model.UserInfo;
-import org.springframework.beans.factory.annotation.Autowired;
+import me.yukuixing.dubbo.model.User;
 import org.springframework.stereotype.Service;
 
 /**
@@ -15,14 +15,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserBiz {
 
-    @Autowired private UserDao userDao;
-    @Autowired private UserSlaveDao userSlaveDao;
+    @Resource
+    private UserDao userDao;
+    @Resource
+    private UserSlaveDao userSlaveDao;
 
-    public void saveUser(UserInfo user) {
+    public void saveUser(User user) {
         userDao.saveUser(user);
     }
 
-    public UserInfo getUserById(long id) {
+    public User getUserById(long id) {
         return userSlaveDao.getUserById(id);
     }
 }

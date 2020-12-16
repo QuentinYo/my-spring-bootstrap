@@ -1,6 +1,6 @@
 package me.yukuixing.dubbo.dao.slave;
 
-import me.yukuixing.dubbo.model.UserInfo;
+import me.yukuixing.dubbo.model.User;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -12,5 +12,5 @@ import org.apache.ibatis.annotations.Param;
 // @Mapper
 public interface UserSlaveDao {
 
-    UserInfo getUserById(@Param("id") long id);
+    User getUserById(@Param("userId") long userId);
 }

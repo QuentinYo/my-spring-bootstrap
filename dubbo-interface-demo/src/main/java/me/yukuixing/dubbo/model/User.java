@@ -1,4 +1,4 @@
-package me.yukuixing.springwebdemo.common.model;
+package me.yukuixing.dubbo.model;
 
 import lombok.Data;
 
@@ -15,4 +15,5 @@ public class User {
     private int age;
     private String name;
     private String password;
+    private long createTime;
 }

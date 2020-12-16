@@ -1,6 +1,6 @@
 package me.yukuixing.dubbo.dao.master;
 
-import me.yukuixing.dubbo.model.UserInfo;
+import me.yukuixing.dubbo.model.User;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -11,5 +11,7 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface UserDao {
 
-    void saveUser(@Param("user") UserInfo user);
+    void saveUser(@Param("user") User user);
+
+    User getUser(@Param("userId") long userId);
 }

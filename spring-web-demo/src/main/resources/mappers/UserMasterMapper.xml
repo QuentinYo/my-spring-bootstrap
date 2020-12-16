@@ -2,7 +2,31 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="me.yukuixing.springwebdemo.dao.master.UserDao">
-    <insert id="saveUser">
-      insert into user values (0, #{user.age}, #{user.name}, #{user.password});
-    </insert>
+  <sql id="columns">
+    id,
+    age,
+    `name`,
+    password,
+    create_time
+  </sql>
+
+  <insert id="saveUser">
+    insert into `user`
+    (
+    <include refid="columns"/>
+    )
+    values
+    (0,
+    #{user.age},
+    #{user.name},
+    #{user.password},
+    #{user.createTime}
+    );
+  </insert>
+
+  <select id="getUser" resultType="me.yukuixing.dubbo.model.User">
+    select
+    <include refid="columns"/>
+    from `user` where id = #{userId};
+  </select>
 </mapper>

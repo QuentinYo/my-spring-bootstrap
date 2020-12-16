@@ -11,10 +11,11 @@ import lombok.Data;
  */
 @Data
 public class UserInfoDto implements Serializable {
+
     private static final long serialVersionUID = 6477721673115349267L;
 
     private long id;
     private String userName;
-    private String mobile;
     private int age;
+    private long createTime;
 }

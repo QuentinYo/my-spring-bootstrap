@@ -1,7 +1,7 @@
 druid:
   master:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://localhost:3306/my_demo?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false
+    url: jdbc:mysql://localhost:3306/my_demo?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false&connectTimeout=10000&socketTimeout=2000
     username: root
     password: 123456
     filters: stat
@@ -19,9 +19,10 @@ druid:
     removeAbandoned: true
     removeAbandonedTimeout: 60
     logAbandoned: false
+    keepAlive: true
   slave:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://localhost:3306/my_demo?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false
+    url: jdbc:mysql://localhost:3306/my_demo?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false&connectTimeout=10000&socketTimeout=2000
     username: root
     password: 123456
     filters: stat
@@ -39,6 +40,7 @@ druid:
     removeAbandoned: true
     removeAbandonedTimeout: 60
     logAbandoned: false
+    keepAlive: true
 
 mybatis:
   internal:

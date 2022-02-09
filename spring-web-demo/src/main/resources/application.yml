@@ -50,6 +50,7 @@ druid:
     removeAbandoned: true
     removeAbandonedTimeout: 60
     logAbandoned: false
+    keepAlive: true
   slave:
     type: com.alibaba.druid.pool.DruidDataSource
     url: jdbc:mysql://localhost:3306/my_demo?useUnicode=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false
@@ -70,6 +71,7 @@ druid:
     removeAbandoned: true
     removeAbandonedTimeout: 60
     logAbandoned: false
+    keepAlive: true
 mybatis:
   internal:
     mapperLocations: "classpath:mappers/*.xml"
